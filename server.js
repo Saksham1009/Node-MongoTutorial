@@ -19,4 +19,9 @@ app.use('/subscribers', subscribersRouter);
 const grocerylistRouter = require('./routes/grocerylist');
 app.use('/grocerylist', grocerylistRouter);
 
+const playersRouter = require('./routes/players');
+app.use('/players', playersRouter);
+
+app.listen(3000);
+
 app.listen(3000);
