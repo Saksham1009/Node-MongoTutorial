@@ -13,6 +13,9 @@ const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
 db.once('open', () => console.log("Connection established successfully"));
 
+const subscribersRouter = require('./routes/subscribers');
+app.use('/subscribers', subscribersRouter);
+
 const grocerylistRouter = require('./routes/grocerylist');
 app.use('/grocerylist', grocerylistRouter);
 
