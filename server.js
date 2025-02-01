@@ -16,5 +16,8 @@ db.once('open', () => console.log("Connection established successfully"));
 const subscribersRouter = require('./routes/subscribers');
 app.use('/subscribers', subscribersRouter);
 
+const playersRouter = require('./routes/players');
+app.use('/players', playersRouter);
+
 app.listen(3000);
 
