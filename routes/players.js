@@ -47,11 +47,20 @@ router.post('/', async (req, res) => {
         team: req.body.team
     });
 
+    //need to add a check to see if the player already exists
+    //if the player already exists, return a 409 status code
+    //if the player does not exist, return a 201 status code
     try {
+        const playerExists = await Player
+            .find({ name: req.body.name, position: req.body.position, number: req.body.number, team: req.body.team });
+        if (playerExists.length > 0) {
+            return res.status(409).json({ message: 'Player already exists' });
+        }
+
         const newPlayer = await player.save();
         res.status(201).json(newPlayer);
     } catch (err) {
-        res.status(400).json({ message: err.message });
+        res.status(500).json({ message: err.message });
     }
 });
 
